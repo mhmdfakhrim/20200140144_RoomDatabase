@@ -27,6 +27,7 @@ import com.example.roomsiswa.navigasi.DestinasiNavigasi
 import com.example.roomsiswa.R
 import com.example.roomsiswa.model.DetailSiswa
 import com.example.roomsiswa.model.UIStateSiswa
+import com.example.roomsiswa.navigasi.SiswaTopAppBar
 
 
 object DestinasiEntry: DestinasiNavigasi {

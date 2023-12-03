@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.roomsiswa.R
 import com.example.roomsiswa.ui.Halaman.DestinasiEntry
 import com.example.roomsiswa.ui.Halaman.DestinasiHome
+import com.example.roomsiswa.ui.Halaman.EntrySiswaScreen
 import com.example.roomsiswa.ui.Halaman.HomeScreen
 
 @Composable
@@ -61,6 +62,7 @@ fun HostNavigasi(
                 )
         }
         composable(DestinasiEntry.route){
+            EntrySiswaScreen(navigateBack = { navController.popBackStack()})
         }
     }
 }
