@@ -1,5 +1,7 @@
 package com.example.roomsiswa.ui.Halaman
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -11,12 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roomsiswa.model.EntryViewModel
 import com.example.roomsiswa.model.PenyediaViewModel
 import com.example.roomsiswa.navigasi.DestinasiNavigasi
 import com.example.roomsiswa.R
+import com.example.roomsiswa.model.DetailSiswa
+import com.example.roomsiswa.model.UIStateSiswa
 
 
 object DestinasiEntry: DestinasiNavigasi {
@@ -58,4 +63,19 @@ fun EntrySiswaScreen(
         )
     }
 
+}
+
+@Composable
+fun EntrySiswaBody(
+    uiStateSiswa: UIStateSiswa,
+    onSiswaValueChange: (DetailSiswa) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_Large)),
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+    ){
+
+    }
 }
