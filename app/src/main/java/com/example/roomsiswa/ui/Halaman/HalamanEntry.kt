@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,6 +30,7 @@ import com.example.roomsiswa.R
 import com.example.roomsiswa.model.DetailSiswa
 import com.example.roomsiswa.model.UIStateSiswa
 import com.example.roomsiswa.navigasi.SiswaTopAppBar
+import kotlinx.coroutines.launch
 
 
 object DestinasiEntry: DestinasiNavigasi {
@@ -57,7 +60,7 @@ fun EntrySiswaScreen(
             uiStateSiswa = viewModel.uiStateSiswa,
             onSiswaValueChange = viewModel::updateUiState,
             onSaveClick = {
-                coroutineScope.Launch {
+                coroutineScope.launch {
                     viewModel.saveSiswa()
                     navigateBack()
                 }
@@ -86,7 +89,12 @@ fun EntrySiswaBody(
             detailSiswa = uiStateSiswa.detailSiswa,
             onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
-        ) {
+        )
+        Button(onClick = onSaveClick,
+            enabled = uiStateSiswa.isEntryValid,
+            shape = MaterialTheme.shapes.small,
+            modifier = Modifier.fillMaxWidth())
+        {
             Text(stringResource(R.string.btn_submit))
         }
     }
