@@ -77,5 +77,6 @@ fun EntrySiswaBody(
         modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
     ){
 
+
     }
 }
