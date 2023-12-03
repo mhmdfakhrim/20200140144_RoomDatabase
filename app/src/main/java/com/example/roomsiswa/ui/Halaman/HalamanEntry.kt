@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -84,7 +85,7 @@ fun EntrySiswaBody(
             detailSiswa = uiStateSiswa.detailSiswa,
             onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
-        ){
+        ) {
             Text(stringResource(R.string.btn_submit))
         }
     }
@@ -126,6 +127,17 @@ fun FormInputSiswa(
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
+        )
+
+        if (enabled) {
+            Text(
+                text = stringResource(R.string.required_field),
+                modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
+            )
+        }
+        Divider(
+            thickness = dimensionResource(R.dimen.padding_small),
+            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
         )
     }
 }
