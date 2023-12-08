@@ -11,9 +11,12 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -21,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.roomsiswa.R
 import com.example.roomsiswa.data.Siswa
 import com.example.roomsiswa.model.ItemDetailUiState
+import com.example.roomsiswa.model.toSiswa
 import com.example.roomsiswa.navigasi.DestinasiNavigasi
 
 object DetailsDestination : DestinasiNavigasi {
@@ -37,8 +41,32 @@ private fun ItemDetailsBody(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.padding()
-    )
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+    ) {
+        var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
+        ItemDetails(
+            siswa = itemDetailUiState.detailSiswa.toSiswa(),
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        OutlinedButton(
+            onClick = { deleteConfirmationRequired = true },
+            shape = MaterialTheme.shapes.small,
+            modifier = Modifier.fillMaxWidth()
+        ){
+            Text(stringResource(R.string.delete))
+        }
+        if (deleteConfirmationRequired){
+            DeleteConfirmationDialog(
+                onDeleteConfirm = { deleteConfirmationRequired = false
+                                  onDelete()
+                                  },
+                onDeleteCancel = { deleteConfirmationRequired = false },
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+            )
+        }
+    }
 }
 @Composable
 fun ItemDetails(
