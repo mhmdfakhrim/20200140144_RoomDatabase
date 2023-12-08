@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.roomsiswa.R
 import com.example.roomsiswa.data.Siswa
+import com.example.roomsiswa.model.ItemDetailUiState
 import com.example.roomsiswa.navigasi.DestinasiNavigasi
 
 object DetailsDestination : DestinasiNavigasi {
@@ -29,6 +30,16 @@ object DetailsDestination : DestinasiNavigasi {
     val routeWithArgs = "$route/{$siswaIdArg}"
 }
 
+@Composable
+private fun ItemDetailsBody(
+    itemDetailUiState: ItemDetailUiState,
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier.padding()
+    )
+}
 @Composable
 fun ItemDetails(
     siswa: Siswa, modifier: Modifier = Modifier
@@ -51,7 +62,18 @@ fun ItemDetails(
                 modifier = Modifier.padding(
                     horizontal = dimensionResource(id = 16dp)
                 ))
-            ItemDetailsRow(labelResID = , itemDetail = )
+            ItemDetailsRow(
+                labelResID = "Alamat Siswa",
+                itemDetail = siswa.alamat,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(id = 16dp)
+                ))
+            ItemDetailsRow(
+                labelResID = "Telpon Siswa",
+                itemDetail = siswa.telpon,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(id = 16dp)
+                ))
         }
     }
 }
