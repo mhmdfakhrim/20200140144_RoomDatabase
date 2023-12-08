@@ -18,6 +18,10 @@ object PenyediaViewModel {
         initializer {
             EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
+
+        initializer {
+
+        }
     }
 }
 
